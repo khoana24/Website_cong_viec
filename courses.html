@@ -55,6 +55,12 @@
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        .category-active {
+            background-color: #3b82f6;
+            color: white;
+            border: 1px solid #2563eb;
+        }
     </style>
 </head>
 <body class="font-inter bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
@@ -134,7 +140,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-24 pb-12 bg-gradient-to-r from-primary-600 to-gray-600 text-white ">
+    <section class="pt-24 pb-12 bg-gradient-to-r from-primary-600 to-gray-600 text-white">
         <div class="text-center">
             <h1 class="text-4xl font-bold mb-4">Nâng cao kỹ năng số</h1>
             <p class="text-lg text-white-600 dark:text-white-300 mb-6">Học từ các chuyên gia hàng đầu với những khóa học chất lượng cao và cập nhật xu hướng công nghệ mới nhất</p>
@@ -149,12 +155,12 @@
         <h2 class="text-2xl font-bold mb-4">Danh mục khóa học</h2>
         <p class="text-gray-600 dark:text-gray-300 mb-6">Chọn lĩnh vực bạn muốn phát triển</p>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="#" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center">Web Development</a>
-            <a href="#" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center">Frontend</a>
-            <a href="#" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center">Data Science</a>
-            <a href="#" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center">UI/UX Design</a>
-            <a href="#" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center">Cloud Computing</a>
-            <a href="#" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center">Tất cả</a>
+            <a href="#" data-category="Lập trình Web" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors" aria-label="Lọc khóa học Lập trình Web">Lập trình Web</a>
+            <a href="#" data-category="Phân tích Dữ liệu" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors" aria-label="Lọc khóa học Phân tích Dữ liệu">Phân tích Dữ liệu</a>
+            <a href="#" data-category="Thiết kế UI/UX" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors" aria-label="Lọc khóa học Thiết kế UI/UX">Thiết kế UI/UX</a>
+            <a href="#" data-category="Lập trình Mobile" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors" aria-label="Lọc khóa học Lập trình Mobile">Lập trình Mobile</a>
+            <a href="#" data-category="Học Máy" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors" aria-label="Lọc khóa học Học Máy">Học Máy</a>
+            <a href="#" data-category="all" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow hover-scale course-card text-center hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors category-active" aria-label="Hiển thị tất cả khóa học">Tất cả</a>
         </div>
     </section>
 
@@ -164,23 +170,44 @@
             <!-- Filters -->
             <div class="md:w-1/4 rounded-lg p-6 bg-gray-100 dark:bg-gray-800 shadow self-start">
                 <h3 class="text-lg font-bold mb-4">Bộ lọc</h3>
-                <div class="mb-6">
+                <div id="filter-level" class="mb-6">
                     <h4 class="font-semibold mb-2">Cấp độ</h4>
-                    <label class="block mb-2"><input type="checkbox" class="mr-2"> Cơ bản</label>
-                    <label class="block mb-2"><input type="checkbox" class="mr-2"> Trung cấp</label>
-                    <label class="block mb-2"><input type="checkbox" class="mr-2"> Nâng cao</label>
+                    <label class="block mb-2 flex items-center">
+                        <input type="checkbox" value="level-Cơ bản" class="mr-2 rounded text-primary-600 focus:ring-primary-500" aria-label="Lọc khóa học cấp độ Cơ bản">
+                        <span>Cơ bản</span>
+                    </label>
+                    <label class="block mb-2 flex items-center">
+                        <input type="checkbox" value="level-Trung cấp" class="mr-2 rounded text-primary-600 focus:ring-primary-500" aria-label="Lọc khóa học cấp độ Trung cấp">
+                        <span>Trung cấp</span>
+                    </label>
+                    <label class="block mb-2 flex items-center">
+                        <input type="checkbox" value="level-Nâng cao" class="mr-2 rounded text-primary-600 focus:ring-primary-500" aria-label="Lọc khóa học cấp độ Nâng cao">
+                        <span>Nâng cao</span>
+                    </label>
                 </div>
-                <div class="mb-6">
+                <div id="filter-price" class="mb-6">
                     <h4 class="font-semibold mb-2">Giá khóa học</h4>
-                    <label class="block mb-2"><input type="checkbox" class="mr-2"> Miễn phí</label>
-                    <label class="block mb-2"><input type="checkbox" class="mr-2"> Có phí</label>
+                    <label class="block mb-2 flex items-center">
+                        <input type="checkbox" value="price-Miễn phí" class="mr-2 rounded text-primary-600 focus:ring-primary-500" aria-label="Lọc khóa học Miễn phí">
+                        <span>Miễn phí</span>
+                    </label>
+                    <label class="block mb-2 flex items-center">
+                        <input type="checkbox" value="price-Có phí" class="mr-2 rounded text-primary-600 focus:ring-primary-500" aria-label="Lọc khóa học Có phí">
+                        <span>Có phí</span>
+                    </label>
                 </div>
-                <div class="mb-6">
+                <div id="filter-rating" class="mb-6">
                     <h4 class="font-semibold mb-2">Đánh giá</h4>
-                    <label class="block mb-2"><input type="checkbox" class="mr-2"> ★★★★★ 4.5+</label>
-                    <label class="block mb-2"><input type="checkbox" class="mr-2"> ★★★★☆ 4.0+</label>
+                    <label class="block mb-2 flex items-center">
+                        <input type="checkbox" value="rating-4.5" class="mr-2 rounded text-primary-600 focus:ring-primary-500" aria-label="Lọc khóa học có đánh giá 4.5 trở lên">
+                        <span>★★★★★ 4.5+</span>
+                    </label>
+                    <label class="block mb-2 flex items-center">
+                        <input type="checkbox" value="rating-4.0" class="mr-2 rounded text-primary-600 focus:ring-primary-500" aria-label="Lọc khóa học có đánh giá 4.0 trở lên">
+                        <span>★★★★☆ 4.0+</span>
+                    </label>
                 </div>
-                <button class="text-primary-600 dark:text-primary-400 hover:underline">Xóa bộ lọc</button>
+                <button id="clear-filters" class="w-full bg-primary-600 hover:bg-primary-700 text-white py-2 px-4 rounded-lg font-medium transition-colors" aria-label="Xóa tất cả bộ lọc">Xóa bộ lọc</button>
             </div>
             <!-- Course List -->
             <div class="md:w-3/4">
