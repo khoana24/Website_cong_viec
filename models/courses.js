@@ -8,7 +8,7 @@ const courses = [
         rating: "★★★★★ 4.5",
         duration: "10 giờ",
         instructor: "Nguyễn Văn A",
-        image: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg", // Hình ảnh code lập trình
+        image: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg",
         videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
@@ -20,7 +20,7 @@ const courses = [
         rating: "★★★★☆ 4.2",
         duration: "15 giờ",
         instructor: "Trần Thị B",
-        image: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg", // Hình ảnh phân tích dữ liệu
+        image: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg", 
         videoUrl: "https://www.youtube.com/embed/VIDEO_ID_2"
     },
     {
@@ -32,7 +32,7 @@ const courses = [
         rating: "★★★★★ 4.7",
         duration: "8 giờ",
         instructor: "Lê Văn C",
-        image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg", // Hình ảnh thiết kế giao diện
+        image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
         videoUrl: "https://www.youtube.com/embed/VIDEO_ID_3"
     },
     {
@@ -44,7 +44,7 @@ const courses = [
         rating: "★★★★★ 4.7",
         duration: "8 giờ",
         instructor: "Lê Văn C",
-        image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg", // Hình ảnh thiết kế giao diện
+        image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg",
         videoUrl: "https://www.youtube.com/embed/VIDEO_ID_3"
     }
 ];
@@ -67,7 +67,7 @@ function renderCourseList() {
 
 function loadCourseDetails() {
     const courseId = new URLSearchParams(window.location.search).get('id');
-    const course = courses.find(c => c.id === courseId) || courses[0]; // Fallback to first course if ID not found
+    const course = courses.find(c => c.id === courseId) || courses[0];
 
     document.getElementById('course-title').textContent = course.title;
     document.getElementById('course-description').textContent = course.description;
